@@ -24,7 +24,6 @@ def save_tasks(tasks):
 
 def add_task(tasks, title):
     """添加新任务"""
-    # 找到当前最大 ID，新 ID = 最大 ID + 1
     max_id = max([task["id"] for task in tasks], default=0)
     task = {
         "id": max_id + 1,
@@ -58,17 +57,23 @@ def mark_done(tasks, task_id):
     print(f"找不到任务 [{task_id}]")
 
 
-def delete_task(tasks, task_id):
-    """删除指定任务"""
+def delete_task(tasks, task_id, force=False):
+    """删除指定任务
+    
+    Args:
+        tasks: 任务列表
+        task_id: 要删除的任务ID
+        force: 是否强制删除（跳过确认提示，用于测试）
+    """
     for i, task in enumerate(tasks):
         if task["id"] == task_id:
-            confirm = input(f"确认删除 [{task_id}] {task['title']}? (y/n): ")
-            if confirm.lower() == 'y':
-                tasks.pop(i)
-                save_tasks(tasks)
-                print(f"已删除任务 [{task_id}]")
-                return
-            else:
-                print("已取消删除")
-                return
+            if not force:
+                confirm = input(f"确认删除 [{task_id}] {task['title']}? (y/n): ")
+                if confirm.lower() != 'y':
+                    print("已取消删除")
+                    return
+            tasks.pop(i)
+            save_tasks(tasks)
+            print(f"已删除任务 [{task_id}]")
+            return
     print(f"找不到任务 [{task_id}]")

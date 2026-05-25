@@ -2,5 +2,7 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "files.autoSave": "afterDelay",
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "black",
+    "editor.defaultFormatter": "ms-python.python"
 }

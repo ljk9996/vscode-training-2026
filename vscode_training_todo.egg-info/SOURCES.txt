@@ -1,0 +1,7 @@
+setup.py
+vscode_training_todo.egg-info/PKG-INFO
+vscode_training_todo.egg-info/SOURCES.txt
+vscode_training_todo.egg-info/dependency_links.txt
+vscode_training_todo.egg-info/entry_points.txt
+vscode_training_todo.egg-info/requires.txt
+vscode_training_todo.egg-info/top_level.txt

@@ -24,8 +24,10 @@ def save_tasks(tasks):
 
 def add_task(tasks, title):
     """添加新任务"""
+    # 找到当前最大 ID，新 ID = 最大 ID + 1
+    max_id = max([task["id"] for task in tasks], default=0)
     task = {
-        "id": len(tasks) + 1,
+        "id": max_id + 1,
         "title": title,
         "done": False,
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M")
